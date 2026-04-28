@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Everyday | Premium Vending Solutions</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-main: #f6efe6;
+      --bg-soft: #efe5d6;
+      --bg-ivory: #fcf8f2;
+      --bg-sage: #e5ede6;
+      --white: #ffffff;
+
+      --green: #183b2f;
+      --green-soft: #2f5a49;
+      --gold: #b99058;
+      --brown: #60402e;
+
+      --text: #22201d;
+      --muted: #756a60;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at top left, rgba(185, 144, 88, 0.08), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(24, 59, 47, 0.07), transparent 25%),
+        var(--bg-main);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      background: rgba(246, 239, 230, 0.95);
+      border-bottom: 1px solid rgba(185, 144, 88, 0.25);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    nav {
+      max-width: 1180px;
+      margin: auto;
+      padding: 20px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      color: var(--green);
+      text-transform: uppercase;
+    }
+
+    .logo span {
+      color: var(--gold);
+      font-style: italic;
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 18px;
+      margin-left: 6px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--green);
+      margin-left: 28px;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-family: Arial, sans-serif;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .hero-section {
+      background: linear-gradient(135deg, var(--bg-main), var(--bg-soft));
+    }
+
+    .hero {
+      max-width: 1180px;
+      margin: auto;
+      padding: 105px 28px 85px;
+      display: grid;
+      grid-template-columns: 1fr 0.95fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 12px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    .hero-text h1 {
+      font-size: 66px;
+      line-height: 1.04;
+      margin-bottom: 26px;
+      color: var(--green);
+      font-weight: normal;
+    }
+
+    .hero-text h1 em {
+      color: var(--brown);
+      font-style: italic;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      color: var(--muted);
+      margin-bottom: 34px;
+      max-width: 560px;
+      font-family: Arial, sans-serif;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--green);
+      color: var(--bg-ivory);
+      padding: 14px 28px;
+      border-radius: 28px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-right: 12px;
+      margin-bottom: 10px;
+      font-family: Arial, sans-serif;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 12px;
+      border: 1px solid var(--green);
+      transition: all 0.3s ease;
+    }
+
+    .button:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--green);
+      border: 1px solid var(--gold);
+    }
+
+    .button.secondary:hover {
+      background: var(--gold);
+      color: white;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: var(--bg-sage);
+      opacity: 0.9;
+      top: 20px;
+      right: 30px;
+      z-index: 0;
+    }
+
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: #ead6cc;
+      opacity: 0.85;
+      bottom: 30px;
+      left: 20px;
+      z-index: 0;
+    }
+
+    .display-board {
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(185, 144, 88, 0.28);
+      box-shadow: 0 24px 55px rgba(24, 59, 47, 0.12);
+      padding: 32px;
+      width: 100%;
+      max-width: 460px;
+      border-radius: 32px;
+      backdrop-filter: blur(8px);
+    }
+
+    .display-header {
+      border-bottom: 1px solid rgba(185, 144, 88, 0.25);
+      padding-bottom: 18px;
+      margin-bottom: 24px;
+    }
+
+    .display-header small {
+      font-family: Arial, sans-serif;
+      text-transform: uppercase;
+      color: var(--gold);
+      letter-spacing: 2px;
+      font-weight: bold;
+      font-size: 11px;
+    }
+
+    .display-header h2 {
+      color: var(--green);
+      font-size: 34px;
+      font-weight: normal;
+      margin-top: 6px;
+      line-height: 1.15;
+    }
+
+    .soft-touch-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .soft-touch-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--bg-ivory);
+      padding: 15px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(185, 144, 88, 0.16);
+      font-family: Arial, sans-serif;
+      color: var(--muted);
+    }
+
+    .soft-icon {
+      width: 42px;
+      height: 42px;
+      min-width: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--green);
+      font-size: 20px;
+    }
+
+    .icon-sage {
+      background: var(--bg-sage);
+    }
+
+    .icon-blush {
+      background: #efd8d0;
+    }
+
+    .icon-sand {
+      background: #ead9c6;
+    }
+
+    .soft-touch-item strong {
+      display: block;
+      color: var(--green);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 18px;
+      font-weight: normal;
+      margin-bottom: 2px;
+    }
+
+    .mini-note {
+      margin-top: 22px;
+      background: var(--green);
+      color: var(--bg-ivory);
+      padding: 18px;
+      border-radius: 22px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+
+    section {
+      padding: 88px 28px;
+    }
+
+    .section-ivory {
+      background: var(--bg-ivory);
+    }
+
+    .section-soft {
+      background: var(--bg-soft);
+    }
+
+    .section-sage {
+      background: linear-gradient(135deg, var(--bg-sage), var(--bg-main));
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: auto;
+    }
+
+    .section-title {
+      max-width: 760px;
+      margin-bottom: 46px;
+    }
+
+    .section-title span {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: bold;
+      font-family: Arial, sans-serif;
+    }
+
+    .section-title h2 {
+      font-size: 46px;
+      line-height: 1.12;
+      margin-top: 12px;
+      margin-bottom: 16px;
+      color: var(--green);
+      font-weight: normal;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      font-size: 18px;
+      font-family: Arial, sans-serif;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--white);
+      padding: 32px;
+      border: 1px solid rgba(185, 144, 88, 0.22);
+      border-radius: 26px;
+      position: relative;
+      min-height: 230px;
+      box-shadow: 0 14px 30px rgba(24, 59, 47, 0.06);
+    }
+
+    .card-number {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--green);
+      color: var(--bg-ivory);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+
+    .card h3 {
+      font-size: 25px;
+      margin-bottom: 14px;
+      color: var(--green);
+      font-weight: normal;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: 15.5px;
+    }
+
+    .touches-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .touch {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(185, 144, 88, 0.2);
+      border-radius: 24px;
+      padding: 26px;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      color: var(--muted);
+      box-shadow: 0 14px 30px rgba(24, 59, 47, 0.05);
+    }
+
+    .touch span {
+      display: block;
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .touch strong {
+      display: block;
+      color: var(--green);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 20px;
+      font-weight: normal;
+      margin-bottom: 8px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.5fr;
+      gap: 65px;
+      align-items: start;
+    }
+
+    .about-panel {
+      background: var(--green);
+      color: var(--bg-ivory);
+      padding: 42px;
+      border-radius: 30px;
+      border: 1px solid rgba(185, 144, 88, 0.55);
+      box-shadow: 0 18px 40px rgba(24, 59, 47, 0.14);
+    }
+
+    .about-panel h2 {
+      font-size: 44px;
+      line-height: 1.1;
+      font-weight: normal;
+    }
+
+    .about-panel p {
+      margin-top: 22px;
+      color: #e9ddcf;
+      font-family: Arial, sans-serif;
+    }
+
+    .about-text p {
+      font-size: 18px;
+      color: var(--muted);
+      margin-bottom: 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    .signature {
+      margin-top: 28px;
+      color: var(--gold);
+      font-size: 24px;
+      font-style: italic;
+    }
+
+    .dark-section {
+      background: var(--green);
+      color: var(--bg-ivory);
+    }
+
+    .dark-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .dark-card {
+      background: rgba(255, 253, 248, 0.07);
+      padding: 38px;
+      border-radius: 28px;
+      border: 1px solid rgba(185, 144, 88, 0.35);
+    }
+
+    .dark-card h3 {
+      font-size: 27px;
+      margin-bottom: 13px;
+      font-weight: normal;
+      color: #f4e0bd;
+    }
+
+    .dark-card p {
+      color: #e2d6c8;
+      font-family: Arial, sans-serif;
+    }
+
+    .contact {
+      text-align: center;
+      background: linear-gradient(135deg, #e7eee8, #f4e6d9, #f8f3ec);
+      padding: 70px 30px;
+      border-radius: 34px;
+      border: 1px solid rgba(185, 144, 88, 0.24);
+      box-shadow: 0 18px 40px rgba(24, 59, 47, 0.08);
+    }
+
+    .contact h2 {
+      font-size: 48px;
+      line-height: 1.1;
+      margin-bottom: 18px;
+      color: var(--green);
+      font-weight: normal;
+    }
+
+    .contact p {
+      color: var(--muted);
+      font-size: 18px;
+      margin: 0 auto 30px;
+      max-width: 760px;
+      font-family: Arial, sans-serif;
+    }
+
+    footer {
+      background: #0f2a21;
+      color: #e8dccd;
+      text-align: center;
+      padding: 26px;
+      font-size: 13px;
+      font-family: Arial, sans-serif;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 850px) {
+      .hero,
+      .about-grid,
+      .dark-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cards,
+      .touches-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 75px;
+      }
+
+      .hero-text h1 {
+        font-size: 43px;
+      }
+
+      .section-title h2,
+      .about-panel h2,
+      .contact h2 {
+        font-size: 34px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .logo {
+        font-size: 21px;
+      }
+
+      .hero-visual {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">The Everyday <span>essentials</span></div>
+
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">What We Offer</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HOME SECTION -->
+    <section class="hero-section" id="home">
+      <div class="hero">
+
+        <div class="hero-text">
+          <div class="eyebrow">Premium vending solutions</div>
+
+          <h1>Everyday convenience, <em>beautifully simple.</em></h1>
+
+          <p>
+            The Everyday provides modern vending solutions stocked with thoughtful essentials for busy spaces.
+            We make it easier for people to access small daily needs without leaving the building.
+          </p>
+
+          <a href="#services" class="button">Explore Services</a>
+          <a href="#about" class="button secondary">Our Story</a>
+        </div>
+
+        <div class="hero-visual">
+          <div class="display-board">
+
+            <div class="display-header">
+              <small>Curated daily essentials</small>
+              <h2>A softer way to serve everyday needs.</h2>
+            </div>
+
+            <div class="soft-touch-list">
+
+              <div class="soft-touch-item">
+                <div class="soft-icon icon-sage">☕</div>
+                <div>
+                  <strong>Refreshments</strong>
+                  Drinks, snacks, water and quick comfort items.
+                </div>
+              </div>
+
+              <div class="soft-touch-item">
+                <div class="soft-icon icon-blush">✦</div>
+                <div>
+                  <strong>Care Items</strong>
+                  Toiletries, personal care and emergency essentials.
+                </div>
+              </div>
+
+              <div class="soft-touch-item">
+                <div class="soft-icon icon-sand">⌁</div>
+                <div>
+                  <strong>Practical Needs</strong>
+                  Stationery, wellness items and everyday basics.
+                </div>
+              </div>
+
+            </div>
+
+            <div class="mini-note">
+              Ideal for offices, schools, churches, gyms, residences and events.
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="section-ivory" id="services">
+      <div class="container">
+
+        <div class="section-title">
+          <span>What We Offer</span>
+          <h2>Organized vending solutions with a premium touch.</h2>
+          <p>
+            We place neat, easy-to-use vending machines in spaces where people need fast access
+            to useful products without long queues or unnecessary trips.
+          </p>
+        </div>
+
+        <div class="cards">
+
+          <div class="card">
+            <div class="card-number">01</div>
+            <h3>Easy Placement</h3>
+            <p>
+              Our machines can be placed in offices, campuses, churches, gyms, apartments,
+              clinics, and waiting areas where convenience matters most.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-number">02</div>
+            <h3>Everyday Products</h3>
+            <p>
+              We can stock snacks, drinks, toiletries, personal care items, stationery,
+              wellness products, and small emergency needs.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-number">03</div>
+            <h3>Reliable Service</h3>
+            <p>
+              We focus on keeping machines clean, stocked, easy to use,
+              and suitable for the space they serve.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SOFT TOUCHES SECTION -->
+    <section class="section-sage">
+      <div class="container">
+
+        <div class="section-title">
+          <span>Soft Touches</span>
+          <h2>Small details that make the experience feel better.</h2>
+          <p>
+            The Everyday is not only about buying quickly. It is about making everyday access
+            feel cleaner, calmer, and more thoughtful.
+          </p>
+        </div>
+
+        <div class="touches-grid">
+
+          <div class="touch">
+            <span>🌿</span>
+            <strong>Clean Look</strong>
+            Simple presentation that feels fresh and welcoming.
+          </div>
+
+          <div class="touch">
+            <span>✨</span>
+            <strong>Neat Stocking</strong>
+            Products arranged in a way that feels organized.
+          </div>
+
+          <div class="touch">
+            <span>🤍</span>
+            <strong>Useful Items</strong>
+            Essentials selected for real daily needs.
+          </div>
+
+          <div class="touch">
+            <span>🕊️</span>
+            <strong>Calm Service</strong>
+            Convenient access without stress or long waiting.
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="section-soft" id="about">
+      <div class="container about-grid">
+
+        <div class="about-panel">
+          <div class="eyebrow">About Us</div>
+          <h2>Designed for the way people move every day.</h2>
+          <p>
+            Simple access. Thoughtful products. A better convenience experience.
+          </p>
+        </div>
+
+        <div class="about-text">
+          <p>
+            The Everyday was created to make daily convenience easier, faster, and more accessible.
+            We understand that people often need simple everyday items while they are at work,
+            school, church, or on the move.
+          </p>
+
+          <p>
+            Instead of having to leave the building or wait in long queues, The Everyday brings
+            essential products closer through modern vending machines. Our approach combines
+            practicality with a clean and welcoming feel.
+          </p>
+
+          <p>
+            We believe convenience should not feel ordinary. It should be simple, reliable,
+            well-presented, and available when people need it most.
+          </p>
+
+          <div class="signature">The Everyday</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- MISSION AND VISION SECTION -->
+    <section class="dark-section">
+      <div class="container dark-grid">
+
+        <div class="dark-card">
+          <h3>Our Mission</h3>
+          <p>
+            To provide easy access to everyday essentials through reliable, clean,
+            and modern vending machines.
+          </p>
+        </div>
+
+        <div class="dark-card">
+          <h3>Our Vision</h3>
+          <p>
+            To become a trusted vending solution that brings convenience closer to communities,
+            workplaces, schools, and public spaces.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+      <div class="container contact">
+
+        <h2>Bring thoughtful convenience closer to your space.</h2>
+
+        <p>
+          Partner with The Everyday to provide modern vending access in your office, school,
+          church, gym, building, or event space.
+        </p>
+
+        <a href="mailto:hello@theeveryday.co.za" class="button">Contact Us</a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 The Everyday. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
